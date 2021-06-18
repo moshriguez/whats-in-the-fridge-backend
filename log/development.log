@@ -387,3 +387,11 @@ FOREIGN KEY ("ingredient_id")
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mUserIngredient Create (0.2ms)[0m  [1m[32mINSERT INTO "user_ingredients" ("user_id", "ingredient_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 11], ["ingredient_id", 8], ["created_at", "2021-06-18 18:45:23.253653"], ["updated_at", "2021-06-18 18:45:23.253653"]]
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUserIngredient Load (0.8ms)[0m  [1m[34mSELECT "user_ingredients".* FROM "user_ingredients" WHERE "user_ingredients"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "user_ingredients" ON "ingredients"."id" = "user_ingredients"."ingredient_id" WHERE "user_ingredients"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" ORDER BY "ingredients"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" ORDER BY "ingredients"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
