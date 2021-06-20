@@ -4,5 +4,6 @@ class User < ApplicationRecord
     has_many :user_ingredients
     has_many :ingredients, through: :user_ingredients
 
-    validates :username, uniqueness: { case_sensitive: false }
+    validates :username, presence: true, uniqueness: { case_sensitive: false }
+    validates :password, length: {minimum: 6}, if: -> {new_record? || !password.nil?}
 end
