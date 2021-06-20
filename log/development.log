@@ -435,3 +435,40 @@ Processing by Api::V1::UsersController#create as */*
 Completed 201 Created in 262ms (Views: 36.9ms | ActiveRecord: 3.4ms | Allocations: 27288)
 
 
+Started POST "/api/v1/login" for ::1 at 2021-06-19 20:25:07 -0700
+Processing by Api::V1::AuthenticationController#login as JSON
+  Parameters: {"username"=>"chautran", "password"=>"[FILTERED]", "authentication"=>{"username"=>"chautran", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/authentication_controller.rb:5:in `login'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "chautran"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentication_controller.rb:5:in `login'
+[active_model_serializers]   [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "user_ingredients" ON "ingredients"."id" = "user_ingredients"."ingredient_id" WHERE "user_ingredients"."user_id" = ?[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/v1/authentication_controller.rb:8:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.44ms)
+Completed 202 Accepted in 210ms (Views: 5.5ms | ActiveRecord: 0.9ms | Allocations: 10516)
+
+
+Started POST "/api/v1/login" for ::1 at 2021-06-19 20:27:50 -0700
+Processing by Api::V1::AuthenticationController#login as JSON
+  Parameters: {"username"=>"chautran", "password"=>"[FILTERED]", "authentication"=>{"username"=>"chautran", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "chautran"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentication_controller.rb:5:in `login'
+[active_model_serializers]   [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "user_ingredients" ON "ingredients"."id" = "user_ingredients"."ingredient_id" WHERE "user_ingredients"."user_id" = ?[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/v1/authentication_controller.rb:8:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.53ms)
+Completed 202 Accepted in 200ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1862)
+
+
+Started POST "/api/v1/login" for ::1 at 2021-06-19 20:40:04 -0700
+Processing by Api::V1::AuthenticationController#login as JSON
+  Parameters: {"username"=>"chautran", "password"=>"[FILTERED]", "authentication"=>{"username"=>"chautran", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/authentication_controller.rb:5:in `login'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "chautran"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentication_controller.rb:5:in `login'
+[active_model_serializers]   [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "user_ingredients" ON "ingredients"."id" = "user_ingredients"."ingredient_id" WHERE "user_ingredients"."user_id" = ?[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/v1/authentication_controller.rb:8:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.47ms)
+Completed 202 Accepted in 190ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 2340)
+
+
