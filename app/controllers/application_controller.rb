@@ -15,6 +15,7 @@ class ApplicationController < ActionController::API
             JWT.decode(token, SECRET_KEY)[0]
         rescue JWT::DecodeError
             nil
+        end
     end
 
     def authorized
