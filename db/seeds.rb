@@ -10,8 +10,11 @@ puts 'Creating users...'
 end
 
 puts 'Creating ingredients...'
-30.times do
-    Ingredient.create(name: Faker::Food.ingredient)
+response = HTTParty.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list') # get all ingredients from themealdb api
+ingredients = JSON.parse(response.body)
+
+ingredients['meals'].each do |ingredient|
+    Ingredient.create(name: ingredient["strIngredient"])
 end
 
 puts "Filling user's fridges..."
