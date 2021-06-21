@@ -11,6 +11,13 @@ class Api::V1::AuthenticationController < ApplicationController
         end
     end
 
+    def user
+        user = User.find(decoded_token["user_id"])
+        if user
+            render json: {user: UserSerializer.new(user)}, status: :accepted
+        end
+    end
+
     private
     
     def login_params
