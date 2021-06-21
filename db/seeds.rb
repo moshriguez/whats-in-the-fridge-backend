@@ -14,7 +14,10 @@ response = HTTParty.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list
 ingredients = JSON.parse(response.body)
 
 ingredients['meals'].each do |ingredient|
-    Ingredient.create(name: ingredient["strIngredient"])
+    description = ingredient["strDescription"]
+    description ||= "(Faker:) #{Faker::Food.description}" # add fake description if description does not exist in the api
+
+    Ingredient.create(name: ingredient["strIngredient"], description: description)
 end
 
 puts "Filling user's fridges..."
