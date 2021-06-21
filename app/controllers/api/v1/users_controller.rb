@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create, :usernames]
 
     def create
         user = User.new(user_params)
@@ -9,6 +9,10 @@ class Api::V1::UsersController < ApplicationController
         else
             render json: {error: ""}, status: :unprocessable_entity
         end
+    end
+
+    def usernames
+        render json: {usernames: User.all.map{|u| u.username}}
     end
 
     private
