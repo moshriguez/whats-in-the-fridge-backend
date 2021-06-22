@@ -1,5 +1,5 @@
 class UserIngredientSerializer < ActiveModel::Serializer
-    attributes :id, :ingredient_id
+    attributes :id, :ingredient
     belongs_to :ingredient
   end
   
