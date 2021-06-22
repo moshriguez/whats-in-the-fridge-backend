@@ -7,12 +7,23 @@ class Api::V1::UsersController < ApplicationController
             token = encode_token({user_id: user.id})
             render json: {user: UserSerializer.new(user), jwt: token}, status: :created
         else
-            render json: {error: ""}, status: :unprocessable_entity
+            render json: {error: user.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
     def usernames
         render json: {usernames: User.all.map{|u| u.username}}
+    end
+
+    def update
+        unless current_user.update(user_params)
+            render json: {errors: current_user.errors.full_messages},
+            status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        current_user.destroy
     end
 
     private
