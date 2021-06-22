@@ -13,9 +13,11 @@ class Api::V1::UsersController < ApplicationController
 
     
     def update
-        unless @current_user.update(user_params)
-            render json: {errors: @current_user.errors.full_messages},
-            status: :unprocessable_entity
+        user = @current_user.update(user_params)
+        if user
+            render json: {user: UserSerializer.new(@current_user)}, status: :accepted
+        else
+            render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
         end
     end
     
@@ -30,6 +32,6 @@ class Api::V1::UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :bio)
+        params.permit(:username, :password, :bio, :favorite_food)
     end
 end
