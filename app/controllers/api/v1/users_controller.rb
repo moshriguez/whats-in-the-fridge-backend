@@ -13,8 +13,8 @@ class Api::V1::UsersController < ApplicationController
 
     
     def update
-        unless current_user.update(user_params)
-            render json: {errors: current_user.errors.full_messages},
+        unless @current_user.update(user_params)
+            render json: {errors: @current_user.errors.full_messages},
             status: :unprocessable_entity
         end
     end
