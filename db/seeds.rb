@@ -6,7 +6,7 @@ Ingredient.destroy_all
 puts 'Creating users...'
 15.times do
     username = Faker::Internet.username
-    User.create(username: username, password_digest: BCrypt::Password::create(username), favorite_food: Faker::Food.dish, bio: Faker::Books::Dune.quote)
+    User.create(username: username, password: "password", favorite_food: Faker::Food.dish, bio: Faker::Books::Dune.quote)
 end
 
 puts 'Creating ingredients...'
