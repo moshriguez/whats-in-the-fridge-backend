@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
     end
 
     def authorized
-        current_user = User.find(decoded_token["user_id"]) if decoded_token
-        render json: {message: "Log in to continue"}, status: :unauthorized unless !!current_user
+        @current_user = User.find(decoded_token["user_id"]) if decoded_token
+        render json: {message: "Log in to continue"}, status: :unauthorized unless !!@current_user
     end
 end

@@ -11,19 +11,20 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
-    def usernames
-        render json: {usernames: User.all.map{|u| u.username}}
-    end
-
+    
     def update
         unless current_user.update(user_params)
             render json: {errors: current_user.errors.full_messages},
             status: :unprocessable_entity
         end
     end
-
+    
     def destroy
-        current_user.destroy
+        @current_user.destroy
+    end
+
+    def usernames
+        render json: {usernames: User.all.map{|u| u.username}}
     end
 
     private
