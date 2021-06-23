@@ -1,4 +1,4 @@
-class Api::V1::IngredientsController < ApplicationController
+class Api::V1::UserIngredientsController < ApplicationController
 
     def create
 
